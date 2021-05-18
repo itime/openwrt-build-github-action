@@ -54,7 +54,7 @@ jobs:
           cd friendlywrt-h3
           cd .repo/manifests
           rm -f ./h3.xml
-          wget https://raw.githubusercontent.com/skytotwo/NanoPi-R1S-Build-By-Actions/master/source_xml/h3_19.07.xml
+          wget https://raw.githubusercontent.com/itime/openwrt-build-github-action/master/source_xml/h3_19.07.xml
           cp h3_19.07.xml h3.xml
           rm -rf ./h3_19.07.xml
           repo sync -c  --no-clone-bundle
@@ -62,8 +62,8 @@ jobs:
       - name: Merge LEDE
         run: |
           cd friendlywrt-h3
-          git clone https://github.com/coolsnowwolf/lede
-          cd friendlywrt
+          git clone https://github.com/itime/lede
+          cd friendlywrts
           cp -r ../lede/package/lean package/
           sed -i 's/https:\/\/git.openwrt.org\/project\/luci.git^039ef1f4deba725d3591b159bbc9569885d68131/https:\/\/github.com\/coolsnowwolf\/luci/' feeds.conf.default
           sed -i 's/https:\/\/git.openwrt.org\/feed\/packages.git^00803ffc91e80b16e9c1603ff32106d42e255923/https:\/\/github.com\/coolsnowwolf\/packages/' feeds.conf.default          
@@ -88,7 +88,7 @@ jobs:
         run: |
           cd friendlywrt-h3/friendlywrt
           rm -f ./.config*
-          wget https://raw.githubusercontent.com/skytotwo/NanoPi-R1S-Build-By-Actions/master/r1s-h3-config
+          wget https://raw.githubusercontent.com/itime/openwrt-build-github-action/master/r1s-h3-config
           cp r1s-h3-config .config
       
       - name: Download package
